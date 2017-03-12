@@ -1,4 +1,4 @@
-package com.mycompany.app;
+package epam.cdp.java_testng.alina_buzhynskaya.module3;
 
 /**
  * Hello world!
