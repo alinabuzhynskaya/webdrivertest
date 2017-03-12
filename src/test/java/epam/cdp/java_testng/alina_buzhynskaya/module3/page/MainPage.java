@@ -19,15 +19,15 @@ public class MainPage {
     private WebDriver driver;
     private WebDriverWait wait;
 
-    public MainPage(WebDriver driver) {
+    public MainPage(WebDriver driver, WebDriverWait wait) {
         this.driver = driver;
+        this.wait = wait;
         PageFactory.initElements(driver, this);
-        wait = new WebDriverWait(driver, 20);
     }
 
-    public SendEmailPage openSendEmaiPage() {
+    public SendEmailPage openSendEmailPage() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[text()='НАПИСАТЬ']")));
         buttonCompose.click();
-        return new SendEmailPage(driver);
+        return new SendEmailPage(driver, wait);
     }
 }

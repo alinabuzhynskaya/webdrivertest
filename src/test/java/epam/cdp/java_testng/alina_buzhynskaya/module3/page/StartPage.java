@@ -1,12 +1,11 @@
 package epam.cdp.java_testng.alina_buzhynskaya.module3.page;
 
+import epam.cdp.java_testng.alina_buzhynskaya.module3.config.Config;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
-import static epam.cdp.java_testng.alina_buzhynskaya.module3.ConfigData.TITLE_START_PAGE;
-import static epam.cdp.java_testng.alina_buzhynskaya.module3.ConfigData.BASE_URL;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * Created by Alina Buzhynskaya on 3/10/2017.
@@ -17,21 +16,23 @@ public class StartPage {
     private WebElement buttonSignIn;
 
     private WebDriver driver;
+    private WebDriverWait wait;
 
-    public StartPage(WebDriver driver) {
+    public StartPage(WebDriver driver, WebDriverWait wait) {
         this.driver = driver;
+        this.wait = wait;
         PageFactory.initElements(driver, this);
     }
 
     public void open() {
-        driver.navigate().to(BASE_URL);
+        driver.navigate().to(Config.getBaseUrl());
     }
 
     public LoginPage openLoginPage() {
-        if (driver.getTitle().equals(TITLE_START_PAGE)) {
+        if (driver.getTitle().equals(Config.getTitleStartPage())) {
             buttonSignIn.click();
         }
 
-        return new LoginPage(driver);
+        return new LoginPage(driver, wait);
     }
 }

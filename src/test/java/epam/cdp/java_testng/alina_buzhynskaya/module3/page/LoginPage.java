@@ -40,10 +40,10 @@ public class LoginPage {
     private WebDriver driver;
     private WebDriverWait wait;
 
-    public LoginPage(WebDriver driver) {
+    public LoginPage(WebDriver driver, WebDriverWait wait) {
         this.driver = driver;
+        this.wait = wait;
         PageFactory.initElements(driver, this);
-        wait = new WebDriverWait(driver, 20);
     }
 
     public MainPage logIn(String email, String password) {
@@ -53,17 +53,22 @@ public class LoginPage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("Passwd")));
         inputPassword.sendKeys(password);
         buttonSignIn.click();
-        return new MainPage(driver);
+        return new MainPage(driver, wait);
     }
 
     public void logOut() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("gbii")));
         buttonAccount.click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("gb_71")));
         buttonLogOut.click();
     }
 
     public void changeAccount() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("account-chooser-link")));
         buttonChangeAccount.click();
+    }
+
+    public void addAccount() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("account-chooser-add-account")));
         buttonAddAccount.click();
     }
