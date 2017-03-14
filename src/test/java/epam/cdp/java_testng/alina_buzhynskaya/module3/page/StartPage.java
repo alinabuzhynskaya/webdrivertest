@@ -5,7 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * Created by Alina Buzhynskaya on 3/10/2017.
@@ -16,11 +15,9 @@ public class StartPage {
     private WebElement buttonSignIn;
 
     private WebDriver driver;
-    private WebDriverWait wait;
 
-    public StartPage(WebDriver driver, WebDriverWait wait) {
+    public StartPage(WebDriver driver) {
         this.driver = driver;
-        this.wait = wait;
         PageFactory.initElements(driver, this);
     }
 
@@ -33,6 +30,6 @@ public class StartPage {
             buttonSignIn.click();
         }
 
-        return new LoginPage(driver, wait);
+        return new LoginPage(driver);
     }
 }

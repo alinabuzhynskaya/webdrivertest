@@ -8,8 +8,9 @@ import epam.cdp.java_testng.alina_buzhynskaya.module3.page.StartPage;
 import epam.cdp.java_testng.alina_buzhynskaya.module3.user.User;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * Unit test for simple App.
@@ -17,15 +18,16 @@ import org.testng.annotations.Test;
 public class AppTest {
 
     @Test
-    public void runTest() {
+    public void checkSpamFunctionalityTest() {
 
         System.setProperty("webdriver.gecko.driver", Config.getDriverPath() + "geckodriver.exe");
         WebDriver driver = new FirefoxDriver();
-        WebDriverWait wait = new WebDriverWait(driver, 20);
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+
         User user1 = new User(Config.getUser1Email(), Config.getUser1Password());
         User user2 = new User(Config.getUser2Email(), Config.getUser2Password());
 
-        StartPage startPage = new StartPage(driver, wait);
+        StartPage startPage = new StartPage(driver);
         startPage.open();
         LoginPage loginPage = startPage.openLoginPage();
         MainPage mainPage = loginPage.logIn(user1.getEmail(), user1.getPassword());
