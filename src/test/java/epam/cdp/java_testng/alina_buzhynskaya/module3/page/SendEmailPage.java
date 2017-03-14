@@ -1,10 +1,13 @@
 package epam.cdp.java_testng.alina_buzhynskaya.module3.page;
 
 import epam.cdp.java_testng.alina_buzhynskaya.module3.config.Config;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * Created by Alina Buzhynskaya on 3/10/2017.
@@ -31,5 +34,9 @@ public class SendEmailPage {
         inputTo.sendKeys(Config.getUser2Email());
         inputSubject.sendKeys(Config.getSubjectEmail());
         buttonSend.click();
+
+        //waiting for success notification
+        WebDriverWait wait = new WebDriverWait(driver, 20);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("link_vsm")));
     }
 }

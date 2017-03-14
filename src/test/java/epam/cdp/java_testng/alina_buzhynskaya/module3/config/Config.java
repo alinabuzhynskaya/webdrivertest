@@ -9,8 +9,10 @@ public class Config {
     private static final String BASE_URL = "https://www.gmail.com";
     private static final String USER1_EMAIL = "annie505smith@gmail.com";
     private static final String USER1_PASSWORD = "annsmith123";
+    private static final String USER1_NAME = "Ann Smith";
     private static final String USER2_EMAIL = "firstlasttest838@gmail.com";
     private static final String USER2_PASSWORD = "firstlasttest8381";
+    private static final String USER2_NAME = "First Last";
     private static final String SUBJECT_EMAIL = "test";
     private static final String TITLE_START_PAGE = "Gmail - Free Storage and Email from Google";
 
@@ -36,6 +38,14 @@ public class Config {
 
     public static String getUser2Password() {
         return USER2_PASSWORD;
+    }
+
+    public static String getUser1Name() {
+        return USER1_NAME;
+    }
+
+    public static String getUser2Name() {
+        return USER2_NAME;
     }
 
     public static String getSubjectEmail() {
