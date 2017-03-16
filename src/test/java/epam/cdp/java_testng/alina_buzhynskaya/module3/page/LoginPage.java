@@ -22,12 +22,6 @@ public class LoginPage {
     @FindBy(id = "signIn")
     private WebElement buttonSignIn;
 
-    @FindBy(className = "gbii")
-    private WebElement buttonAccount;
-
-    @FindBy(id = "gb_71")
-    private WebElement buttonLogOut;
-
     @FindBy(id = "account-chooser-link")
     private WebElement buttonChangeAccount;
 
@@ -48,11 +42,6 @@ public class LoginPage {
         inputPassword.sendKeys(password);
         buttonSignIn.click();
         return new MainPage(driver);
-    }
-
-    public void logOut() {
-        buttonAccount.click();
-        buttonLogOut.click();
     }
 
     public void changeAccount() {

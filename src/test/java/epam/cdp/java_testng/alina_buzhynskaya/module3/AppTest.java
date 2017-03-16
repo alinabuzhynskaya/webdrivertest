@@ -8,9 +8,8 @@ import epam.cdp.java_testng.alina_buzhynskaya.module3.page.StartPage;
 import epam.cdp.java_testng.alina_buzhynskaya.module3.user.User;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
+import org.testng.Assert;
+import org.testng.annotations.*;
 
 import java.util.concurrent.TimeUnit;
 
@@ -19,7 +18,10 @@ import java.util.concurrent.TimeUnit;
  */
 public class AppTest {
 
+    private StartPage startPage;
     private LoginPage loginPage;
+    private MainPage mainPage;
+    private SendEmailPage sendEmailPage;
     private WebDriver driver;
 
     @BeforeClass
@@ -36,38 +38,38 @@ public class AppTest {
         User user1 = new User(Config.getUser1Email(), Config.getUser1Password(), Config.getUser1Name());
         User user2 = new User(Config.getUser2Email(), Config.getUser2Password(), Config.getUser2Name());
 
-        StartPage startPage = new StartPage(driver);
+        startPage = new StartPage(driver);
         startPage.open();
         loginPage = startPage.openLoginPage();
-        MainPage mainPage = loginPage.logIn(user1.getEmail(), user1.getPassword());
-        SendEmailPage sendEmailPage = mainPage.openSendEmailPage();
+        mainPage = loginPage.logIn(user1.getEmail(), user1.getPassword());
+        sendEmailPage = mainPage.openSendEmailPage();
         sendEmailPage.sendEmail();
-        loginPage.logOut();
+        loginPage = mainPage.logOut();
 
         loginPage.changeAccount();
         loginPage.addAccount();
         mainPage = loginPage.logIn(user2.getEmail(), user2.getPassword());
         mainPage.sendToSpam(user1.getName());
-        loginPage.logOut();
+        mainPage.openSpamPage();
+        mainPage.clearSpamBox();
+        loginPage = mainPage.logOut();
 
         loginPage.addAccount();
         mainPage = loginPage.logIn(user1.getEmail(), user1.getPassword());
         sendEmailPage = mainPage.openSendEmailPage();
         sendEmailPage.sendEmail();
-        loginPage.logOut();
+        loginPage = mainPage.logOut();
 
         loginPage.addAccount();
         mainPage = loginPage.logIn(user2.getEmail(), user2.getPassword());
         mainPage.openSpamPage();
-
-        //todo check email in archive box
-
-        //Assert.assertEquals();
+        String senderName = mainPage.findSenderNameInSpam();
+        Assert.assertEquals(senderName, user1.getName());
     }
 
-//    @AfterTest
-//    public void afterTest() {
-//        loginPage.logOut();
-//        driver.quit();
-//    }
+    @AfterTest
+    public void afterTest() {
+        mainPage.logOut();
+        driver.quit();
+    }
 }
