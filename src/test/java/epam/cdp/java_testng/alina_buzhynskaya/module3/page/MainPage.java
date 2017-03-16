@@ -17,14 +17,26 @@ public class MainPage {
     @FindBy(xpath = "//div[text()='НАПИСАТЬ']")
     private WebElement buttonCompose;
 
-    @FindBy(xpath = "//div[act='9']")
+    @FindBy(xpath = "//div[@act='9']")
+    private WebElement buttonActivateSpam;
+
+    @FindBy(name = "rs")
     private WebElement buttonReportSpam;
 
     @FindBy(xpath = "//span[text()='Delete all spam messages now']")
     private WebElement buttonClearSpam;
 
+    @FindBy(id = "gbqfq")
+    private WebElement inputSearch;
+
+    @FindBy(id = "gbqfb")
+    private WebElement buttonSearch;
+
+    @FindBy(name = "ok")
+    private WebElement buttonClearSpamOk;
+
     @FindBy(name = "c")
-    private WebElement sender;
+    private WebElement senderName;
 
     @FindBy(className = "gbii")
     private WebElement buttonAccount;
@@ -47,23 +59,26 @@ public class MainPage {
     public void sendToSpam(String userName) {
         WebElement email = driver.findElement(By.name(userName));
         email.click();
+        buttonActivateSpam.click();
         buttonReportSpam.click();
     }
 
     public void clearSpamBox() {
         buttonClearSpam.click();
+        buttonClearSpamOk.click();
     }
 
     public String findSenderNameInSpam() {
-        return sender.getText();
+        return senderName.getText();
     }
 
     public void openSpamPage() {
         //waiting for opening of main page
         WebDriverWait wait = new WebDriverWait(driver, 20);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[text()='COMPOSE']")));
-
-        driver.get("https://mail.google.com/mail/#spam");
+        inputSearch.clear();
+        inputSearch.sendKeys("in:spam");
+        buttonSearch.click();
     }
 
     public LoginPage logOut() {

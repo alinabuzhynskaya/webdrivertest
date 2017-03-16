@@ -67,9 +67,9 @@ public class AppTest {
         Assert.assertEquals(senderName, user1.getName());
     }
 
-    @AfterTest
-    public void afterTest() {
-        mainPage.logOut();
-        driver.quit();
-    }
+//    @AfterTest
+//    public void afterTest() {
+//        mainPage.logOut();
+//        driver.quit();
+//    }
 }
