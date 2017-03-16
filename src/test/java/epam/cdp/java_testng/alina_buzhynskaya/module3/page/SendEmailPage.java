@@ -31,7 +31,7 @@ public class SendEmailPage {
     }
 
     public void sendEmail() {
-        inputTo.sendKeys(Config.getUser2Email());
+        //inputTo.sendKeys(Config.getUser2Email());
         inputSubject.sendKeys(Config.getSubjectEmail());
         buttonSend.click();
 

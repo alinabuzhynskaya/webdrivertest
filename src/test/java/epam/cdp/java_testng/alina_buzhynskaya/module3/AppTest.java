@@ -47,7 +47,7 @@ public class AppTest {
         loginPage.changeAccount();
         loginPage.addAccount();
         mainPage = loginPage.logIn(user2.getEmail(), user2.getPassword());
-        mainPage.archiveEmail(user1.getName());
+        mainPage.sendToSpam(user1.getName());
         loginPage.logOut();
 
         loginPage.addAccount();
@@ -58,13 +58,16 @@ public class AppTest {
 
         loginPage.addAccount();
         mainPage = loginPage.logIn(user2.getEmail(), user2.getPassword());
-//        //todo check email in archive box
-//        //Assert.assertEquals();
+        mainPage.openSpamPage();
+
+        //todo check email in archive box
+
+        //Assert.assertEquals();
     }
 
-    @AfterTest
-    public void afterTest() {
-        loginPage.logOut();
-        driver.quit();
-    }
+//    @AfterTest
+//    public void afterTest() {
+//        loginPage.logOut();
+//        driver.quit();
+//    }
 }

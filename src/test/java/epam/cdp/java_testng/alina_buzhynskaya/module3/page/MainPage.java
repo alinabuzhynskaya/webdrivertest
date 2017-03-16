@@ -15,8 +15,14 @@ public class MainPage {
     @FindBy(xpath = "//div[text()='НАПИСАТЬ']")
     private WebElement buttonCompose;
 
-    @FindBy(xpath = "//div[act='7']")
-    private WebElement buttonArchive;
+    @FindBy(className = "asl")
+    private WebElement buttonReportSpam;
+
+    @FindBy(className = "G-asx")
+    private WebElement buttonMore;
+
+    @FindBy(className = "J-Ke")
+    private WebElement buttonSpam;
 
     private WebDriver driver;
 
@@ -30,9 +36,14 @@ public class MainPage {
         return new SendEmailPage(driver);
     }
 
-    public void archiveEmail(String userName) {
+    public void sendToSpam(String userName) {
         WebElement email = driver.findElement(By.name(userName));
         email.click();
-        //buttonArchive.click();
+        //buttonReportSpam.click();
+    }
+
+    public void openSpamPage() {
+        buttonMore.click();
+        buttonSpam.click();
     }
 }
