@@ -26,7 +26,7 @@ public class AppTest {
 
     @BeforeClass
     public void beforeClass() {
-        WebDriver driver = WebDriverInstance.getInstance();
+        driver = WebDriverInstance.getInstance();
     }
 
     @Test
