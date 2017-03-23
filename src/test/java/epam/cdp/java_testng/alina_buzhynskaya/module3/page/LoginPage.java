@@ -30,8 +30,6 @@ public class LoginPage extends AbstractPage {
     @FindBy(id = "account-chooser-add-account")
     private WebElement buttonAddAccount;
 
-    private WebDriver driver;
-
     public LoginPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);

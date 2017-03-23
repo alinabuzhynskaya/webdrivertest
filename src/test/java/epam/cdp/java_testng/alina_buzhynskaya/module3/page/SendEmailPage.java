@@ -14,6 +14,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  */
 public class SendEmailPage extends AbstractPage{
 
+    private static final String SEND_EMAIL_PAGE_URL = "https://mail.google.com/mail/#inbox?compose=new";
+
     @FindBy(name = "to")
     private WebElement inputTo;
 
@@ -23,8 +25,6 @@ public class SendEmailPage extends AbstractPage{
     @FindBy(xpath = "//div[text()='Отправить']")
     private WebElement buttonSend;
 
-    private WebDriver driver;
-
     public SendEmailPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
@@ -32,6 +32,7 @@ public class SendEmailPage extends AbstractPage{
 
     @Override
     public void open() {
+        driver.navigate().to(SEND_EMAIL_PAGE_URL);
     }
 
     public void sendEmail() {

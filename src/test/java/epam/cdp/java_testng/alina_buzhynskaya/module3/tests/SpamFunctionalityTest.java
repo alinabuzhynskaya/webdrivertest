@@ -72,7 +72,7 @@ public class SpamFunctionalityTest {
     }
 
     @AfterClass
-    public void afterTest() {
+    public void AfterClass() {
         mainPage.logOut();
         WebDriverInstance.quit();
     }

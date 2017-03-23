@@ -44,8 +44,6 @@ public class MainPage extends AbstractPage{
     @FindBy(id = "gb_71")
     private WebElement buttonLogOut;
 
-    private WebDriver driver;
-
     public MainPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
@@ -88,6 +86,11 @@ public class MainPage extends AbstractPage{
     public LoginPage logOut() {
         buttonAccount.click();
         buttonLogOut.click();
+
+        //waiting for success notification
+        WebDriverWait wait = new WebDriverWait(driver, 20);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("next")));
+
         return new LoginPage(driver);
     }
 }
