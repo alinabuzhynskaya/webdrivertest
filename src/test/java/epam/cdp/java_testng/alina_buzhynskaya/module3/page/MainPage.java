@@ -12,7 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 /**
  * Created by Alina Buzhynskaya on 3/10/2017.
  */
-public class MainPage {
+public class MainPage extends AbstractPage{
 
     @FindBy(xpath = "//div[text()='НАПИСАТЬ']")
     private WebElement buttonCompose;
@@ -47,8 +47,12 @@ public class MainPage {
     private WebDriver driver;
 
     public MainPage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+        super(driver);
+        PageFactory.initElements(this.driver, this);
+    }
+
+    @Override
+    public void open() {
     }
 
     public SendEmailPage openSendEmailPage() {

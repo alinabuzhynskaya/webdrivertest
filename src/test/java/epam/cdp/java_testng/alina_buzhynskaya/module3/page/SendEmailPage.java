@@ -12,7 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 /**
  * Created by Alina Buzhynskaya on 3/10/2017.
  */
-public class SendEmailPage {
+public class SendEmailPage extends AbstractPage{
 
     @FindBy(name = "to")
     private WebElement inputTo;
@@ -26,8 +26,12 @@ public class SendEmailPage {
     private WebDriver driver;
 
     public SendEmailPage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+        super(driver);
+        PageFactory.initElements(this.driver, this);
+    }
+
+    @Override
+    public void open() {
     }
 
     public void sendEmail() {

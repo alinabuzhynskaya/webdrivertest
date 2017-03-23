@@ -1,5 +1,6 @@
-package epam.cdp.java_testng.alina_buzhynskaya.module3;
+package epam.cdp.java_testng.alina_buzhynskaya.module3.tests;
 
+import epam.cdp.java_testng.alina_buzhynskaya.module3.webdriver.WebDriverInstance;
 import epam.cdp.java_testng.alina_buzhynskaya.module3.config.Config;
 import epam.cdp.java_testng.alina_buzhynskaya.module3.page.LoginPage;
 import epam.cdp.java_testng.alina_buzhynskaya.module3.page.MainPage;
@@ -7,16 +8,13 @@ import epam.cdp.java_testng.alina_buzhynskaya.module3.page.SendEmailPage;
 import epam.cdp.java_testng.alina_buzhynskaya.module3.page.StartPage;
 import epam.cdp.java_testng.alina_buzhynskaya.module3.user.User;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
-
-import java.util.concurrent.TimeUnit;
 
 /**
  * Unit test for simple App.
  */
-public class AppTest {
+public class SpamFunctionalityTest {
 
     private StartPage startPage;
     private LoginPage loginPage;

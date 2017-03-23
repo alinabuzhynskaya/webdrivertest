@@ -8,7 +8,9 @@ import org.openqa.selenium.support.PageFactory;
 /**
  * Created by Alina Buzhynskaya on 3/10/2017.
  */
-public class LoginPage {
+public class LoginPage extends AbstractPage{
+
+    private static final String LOGIN_URL = "https://gmail.com";
 
     @FindBy(id = "Email")
     private WebElement inputLogin;
@@ -31,8 +33,13 @@ public class LoginPage {
     private WebDriver driver;
 
     public LoginPage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+        super(driver);
+        PageFactory.initElements(this.driver, this);
+    }
+
+    @Override
+    public void open() {
+        driver.navigate().to(LOGIN_URL);
     }
 
     public MainPage logIn(String email, String password) {
