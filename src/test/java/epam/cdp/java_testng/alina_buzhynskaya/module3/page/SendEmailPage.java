@@ -27,7 +27,7 @@ public class SendEmailPage extends AbstractPage{
 
     public SendEmailPage(WebDriver driver) {
         super(driver);
-        PageFactory.initElements(this.driver, this);
+        PageFactory.initElements(driver, this);
     }
 
     @Override

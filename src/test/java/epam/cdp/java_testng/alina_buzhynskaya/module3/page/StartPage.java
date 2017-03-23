@@ -9,18 +9,16 @@ import org.openqa.selenium.support.PageFactory;
 /**
  * Created by Alina Buzhynskaya on 3/10/2017.
  */
-public class StartPage extends AbstractPage{
+public class StartPage extends AbstractPage {
 
     private static final String START_PAGE_URL = "https://gmail.com";
 
     @FindBy(className = "gmail-nav__nav-link__sign-in")
     private WebElement buttonSignIn;
 
-    private WebDriver driver;
-
     public StartPage(WebDriver driver) {
         super(driver);
-        PageFactory.initElements(this.driver, this);
+        PageFactory.initElements(driver, this);
     }
 
     @Override

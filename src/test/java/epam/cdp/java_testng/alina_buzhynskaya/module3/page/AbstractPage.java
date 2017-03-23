@@ -6,7 +6,8 @@ import org.openqa.selenium.WebDriver;
  * Created by Alina_Buzhynskaya on 3/23/2017.
  */
 abstract public class AbstractPage {
-    private WebDriver driver;
+
+    protected WebDriver driver;
 
     abstract void open();
 

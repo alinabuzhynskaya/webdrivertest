@@ -24,7 +24,7 @@ public class SpamFunctionalityTest {
 
     @BeforeClass
     public void beforeClass() {
-        driver = WebDriverInstance.getInstance();
+        driver = WebDriverInstance.getWebDriverInstance("firefox");
     }
 
     @Test
@@ -71,9 +71,9 @@ public class SpamFunctionalityTest {
         Assert.assertEquals(senderName, user1.getName());
     }
 
-//    @AfterTest
-//    public void afterTest() {
-//        mainPage.logOut();
-//        driver.quit();
-//    }
+    @AfterClass
+    public void afterTest() {
+        mainPage.logOut();
+        WebDriverInstance.quit();
+    }
 }

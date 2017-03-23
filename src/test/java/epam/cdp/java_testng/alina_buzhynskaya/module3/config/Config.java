@@ -5,8 +5,8 @@ package epam.cdp.java_testng.alina_buzhynskaya.module3.config;
  */
 public class Config {
 
-    private static final String DRIVER_PATH = "C:\\Program Files\\geckodriver\\";
-    private static final String BASE_URL = "https://www.gmail.com";
+    private static final String CHROME_DRIVER_PATH = "C:\\Program Files\\geckodriver\\";
+    private static final String FIREFOX_DRIVER_PATH = "C:\\Program Files\\chromedriver\\";
     private static final String USER1_EMAIL = "annie505smith@gmail.com";
     private static final String USER1_PASSWORD = "annsmith123";
     private static final String USER1_NAME = "Ann Smith";
@@ -16,12 +16,12 @@ public class Config {
     private static final String SUBJECT_EMAIL = "test";
     private static final String TITLE_START_PAGE = "Gmail - Free Storage and Email from Google";
 
-    public static String getDriverPath() {
-        return DRIVER_PATH;
+    public static String getChromeDriverPath() {
+        return CHROME_DRIVER_PATH;
     }
 
-    public static String getBaseUrl() {
-        return BASE_URL;
+    public static String getFirefoxDriverPath() {
+        return FIREFOX_DRIVER_PATH;
     }
 
     public static String getUser1Email() {

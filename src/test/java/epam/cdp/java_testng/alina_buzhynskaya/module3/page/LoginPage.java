@@ -8,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 /**
  * Created by Alina Buzhynskaya on 3/10/2017.
  */
-public class LoginPage extends AbstractPage{
+public class LoginPage extends AbstractPage {
 
     private static final String LOGIN_URL = "https://gmail.com";
 
@@ -34,7 +34,7 @@ public class LoginPage extends AbstractPage{
 
     public LoginPage(WebDriver driver) {
         super(driver);
-        PageFactory.initElements(this.driver, this);
+        PageFactory.initElements(driver, this);
     }
 
     @Override
