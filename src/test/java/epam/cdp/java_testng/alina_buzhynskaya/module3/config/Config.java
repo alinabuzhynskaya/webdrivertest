@@ -5,8 +5,8 @@ package epam.cdp.java_testng.alina_buzhynskaya.module3.config;
  */
 public class Config {
 
-    private static final String CHROME_DRIVER_PATH = "C:\\Program Files\\geckodriver\\";
-    private static final String FIREFOX_DRIVER_PATH = "C:\\Program Files\\chromedriver\\";
+    private static final String CHROME_DRIVER_PATH = "C:\\drivers\\";
+    private static final String FIREFOX_DRIVER_PATH = "C:\\Program Files\\geckodriver\\";
     private static final String USER1_EMAIL = "annie505smith@gmail.com";
     private static final String USER1_PASSWORD = "annsmith123";
     private static final String USER1_NAME = "Ann Smith";

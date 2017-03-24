@@ -16,34 +16,29 @@ public class WebDriverInstance {
     private static WebDriverCreator creator;
 
     public static WebDriver getWebDriverInstance(String browserName) {
-
-        switch (browserName) {
-            case "chrome":
-                if (driver == null) {
+        if (driver == null) {
+            switch (browserName) {
+                case "chrome":
                     System.setProperty("webdriver.chrome.driver", Config.getChromeDriverPath() + "chromedriver.exe");
-                    driver = new ChromeDriver();
                     creator = new ChromeDriverCreator();
-                }
-                break;
-            case "firefox":
-                if (driver == null) {
-                    System.setProperty("webdriver.chrome.driver", Config.getChromeDriverPath() + "geckodriver.exe");
-                    driver = new ChromeDriver();
-                    creator = new FirefoxDriverCreator();
-                }
-                break;
-            default:
-                if (driver == null) {
+                    break;
+                case "firefox":
                     System.setProperty("webdriver.gecko.driver", Config.getFirefoxDriverPath() + "geckodriver.exe");
-                    driver = new FirefoxDriver();
-                }
-                break;
-        }
+                    creator = new FirefoxDriverCreator();
+                    break;
+                default:
+                    System.setProperty("webdriver.gecko.driver", Config.getFirefoxDriverPath() + "geckodriver.exe");
+                    creator = new FirefoxDriverCreator();
+                    break;
+            }
+          driver = creator.FactoryMethod();
+            driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+            driver.manage().window().maximize();
+            return driver;
 
-        driver = creator.FactoryMethod();
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        driver.manage().window().maximize();
-        return driver;
+        } else{
+            return driver;
+        }
     }
 
     public static void quit() {
