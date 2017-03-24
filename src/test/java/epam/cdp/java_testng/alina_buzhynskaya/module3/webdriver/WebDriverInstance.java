@@ -13,6 +13,7 @@ import java.util.concurrent.TimeUnit;
 public class WebDriverInstance {
 
     private static WebDriver driver = null;
+    private static WebDriverCreator creator;
 
     public static WebDriver getWebDriverInstance(String browserName) {
 
@@ -21,12 +22,14 @@ public class WebDriverInstance {
                 if (driver == null) {
                     System.setProperty("webdriver.chrome.driver", Config.getChromeDriverPath() + "chromedriver.exe");
                     driver = new ChromeDriver();
+                    creator = new ChromeDriverCreator();
                 }
                 break;
             case "firefox":
                 if (driver == null) {
                     System.setProperty("webdriver.chrome.driver", Config.getChromeDriverPath() + "geckodriver.exe");
                     driver = new ChromeDriver();
+                    creator = new FirefoxDriverCreator();
                 }
                 break;
             default:
@@ -37,6 +40,7 @@ public class WebDriverInstance {
                 break;
         }
 
+        driver = creator.FactoryMethod();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         driver.manage().window().maximize();
         return driver;
