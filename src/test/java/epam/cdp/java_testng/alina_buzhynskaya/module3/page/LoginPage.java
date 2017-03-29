@@ -1,5 +1,7 @@
 package epam.cdp.java_testng.alina_buzhynskaya.module3.page;
 
+import epam.cdp.java_testng.alina_buzhynskaya.module3.webdriver.WebElementDecorator;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -41,11 +43,24 @@ public class LoginPage extends AbstractPage {
     }
 
     public MainPage logIn(String email, String password) {
-        inputLogin.sendKeys(email);
-        buttonNext.click();
+        WebElementDecorator highlightedInputLogin = new WebElementDecorator(inputLogin);
+        highlightedInputLogin.highlightElement(driver);
+        highlightedInputLogin.sendKeys(email);
+
+        WebElementDecorator highlightedButtonNext = new WebElementDecorator(buttonNext);
+        highlightedButtonNext.highlightElement(driver);
+        highlightedButtonNext.click();
+
         inputPassword.clear();
-        inputPassword.sendKeys(password);
-        buttonSignIn.click();
+
+        WebElementDecorator highlightInputPassword = new WebElementDecorator(inputPassword);
+        highlightInputPassword.highlightElement(driver);
+        highlightInputPassword.sendKeys(password);
+
+        WebElementDecorator highlightButtonSignIn = new WebElementDecorator(buttonSignIn);
+        highlightButtonSignIn.highlightElement(driver);
+        highlightButtonSignIn.click();
+
         return new MainPage(driver);
     }
 

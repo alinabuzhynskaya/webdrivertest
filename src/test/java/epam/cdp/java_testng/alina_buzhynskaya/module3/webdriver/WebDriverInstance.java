@@ -31,12 +31,12 @@ public class WebDriverInstance {
                     creator = new FirefoxDriverCreator();
                     break;
             }
-          driver = creator.FactoryMethod();
+            driver = creator.FactoryMethod();
             driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
             driver.manage().window().maximize();
             return driver;
 
-        } else{
+        } else {
             return driver;
         }
     }
